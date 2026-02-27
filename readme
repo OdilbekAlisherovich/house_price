@@ -14,10 +14,7 @@ Kaggle evaluates using **RMSE on log-transformed SalePrice**:
 ## Project Structure
 house-prices/
 │
-├── train.csv
-├── test.csv
 ├── house_price_model.ipynb
-├── submission.csv
 ├── README.md
 └── requirements.txt
 
