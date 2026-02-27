@@ -3,10 +3,7 @@ Predict house sale prices using the Ames Housing dataset (Kaggle: *House Prices 
 ## Problem
 Given residential home features, predict the final sale price (`SalePrice`).
 ## Dataset
-- `train.csv`: training data with target `SalePrice`
-- `test.csv`: test data for final submission
-- `data_description.txt`: feature descriptions
-- `sample_submission.csv`: submission format
+from kaggle competition
 ## Metric
 Kaggle evaluates using **RMSE on log-transformed SalePrice**:
 - Target used in this project: `y = log1p(SalePrice)`
@@ -19,7 +16,6 @@ house-prices/
 └── requirements.txt
 
 ## Feature Engineering
-- Removed extreme outliers (GrLivArea > 4000)
 - Created TotalSF feature
 - Created TotalBath feature
 - Added HouseAge and RemodAge
