@@ -1,0 +1,58 @@
+# House Prices - Regression (Kaggle)
+Predict house sale prices using the Ames Housing dataset (Kaggle: *House Prices - Advanced Regression Techniques*).
+## Problem
+Given residential home features, predict the final sale price (`SalePrice`).
+## Dataset
+- `train.csv`: training data with target `SalePrice`
+- `test.csv`: test data for final submission
+- `data_description.txt`: feature descriptions
+- `sample_submission.csv`: submission format
+## Metric
+Kaggle evaluates using **RMSE on log-transformed SalePrice**:
+- Target used in this project: `y = log1p(SalePrice)`
+- Predictions converted back: `SalePrice = expm1(y_pred)`
+## Project Structure
+house-prices/
+│
+├── train.csv
+├── test.csv
+├── house_price_model.ipynb
+├── submission.csv
+├── README.md
+└── requirements.txt
+
+## Feature Engineering
+- Removed extreme outliers (GrLivArea > 4000)
+- Created TotalSF feature
+- Created TotalBath feature
+- Added HouseAge and RemodAge
+
+## Data Leakage Prevention
+All preprocessing steps were implemented inside sklearn Pipeline to ensure no information leakage during cross-validation.
+
+## Models
+### RandomForestRegressor
+- n_estimators: tuned via GridSearchCV
+- max_depth: tuned
+- min_samples_leaf: tuned
+- Cross-validation: 5-fold KFold
+
+Random Forest serves as a strong baseline model for tabular regression tasks.
+
+### XGBoostRegressor
+- Gradient boosting framework optimized for structured data
+- Tuned using GridSearchCV
+- Achieved best CV score
+
+Tree-based models were chosen due to their robustness to non-linear relationships and minimal need for feature scaling.
+## Model Performance
+
+| Model | 5-Fold CV Log RMSE |
+|-------|--------------------|
+| RandomForest | 0.19 |
+| XGBoost | 0.17 |
+
+## How to Run
+
+pip install -r requirements.txt
+python house_price_model.ipynb
